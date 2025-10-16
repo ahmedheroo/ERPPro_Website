@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
             Empower Your Business with ERP Pro
           </h1>
           <p className="text-lg md:text-xl text-gray-600 mb-8 fade-in" style={{ transitionDelay: '0.2s' }}>
-            Manage employees, attendance, payroll, and HR — all in one place.
+            Manage all your Business — all in one place.
           </p>
           <div className="flex justify-center space-x-4 fade-in" style={{ transitionDelay: '0.4s' }}>
             <a href="#pricing" className="bg-primary text-white font-semibold px-8 py-3 rounded-full hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg">
