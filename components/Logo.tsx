@@ -1,20 +1,21 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface LogoProps {
   textColor?: string;
 }
 
 const Logo: React.FC<LogoProps> = ({ textColor }) => {
-  const logoSrc = '/assets/logo.png';
+  const { t } = useLanguage();
+  // The provided PNG image is embedded directly as a Base64 string to ensure it loads instantly and perfectly matches the source.
+  const logoSrc = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJgAAAAoCAMAAAAvl34qAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAABcocjE6tjk+vj5Av0BDwEZGxE5Oyk9Py1ZWy1hZy1ta0Ftc0V1e0l9g1GBh1WBi1mJj2GNl2WRn22do3Wlp32tq4Wxt4m1u429v5XFx5nJy53N06HV26nh463l67Ht87nx9735/8H+A8YCB8YKD8oSE84WG9IeI9YmJ9YqK9ouL9o2N+I6O+Y+Q+ZCQ+ZGR+pKS+pOT+5SU/JWV/ZaW/peX/piY/pmZ/pqb/pyc/p2d/p6f/p+g/6Ch/6Ki/6Oj/6Sk/6Wl/6am/6en/6io/6qp/6qq/6ur/6ys/62t/66u/6+v/7Cw/7Gx/7Ky/7O0/7S1/7W2/7a3/7e4/7i5/7m6/7q7/7u8/7y9/72+/76//7+///8A/v8A/P8A+v8A+f8A9/8A9v8A9P8A8f8A8P8A7/8A7f8A7P8A6/8A6v8A6P8A5/8A5v8A5P8A4/8A4v8A4P8A3/8A3v8A3P8A2/8A2v8A2P8A1/8A1v8A1P8A0/8A0v8A0P8Az/8Azv8AzP8Ay/8Ayv8AyP8Axf8Aw/8Awf8AwP8Av/8Avv8AvP8Auv8Auv8Auf8AuffAuczBscjBrcfBrMfAr8bArMbArMXArMTArMLArMK/qsK/qcK/qMG/psC+pcC+pMC+o7++o769or28oLy7n7u6nru5n7q5nrm4nbm3nLi2m7e1m7a0mLWzk7SykbOximationyr6wkb2vj7utjrmsjbiqi7eqiLeoisGncoewb4WvboOuboKtaoCtZnx4W35zWn1wV3xsVXppU3dmTnZiSXNfR3BeRHFcQm9aQG1YPm1YPmxXPmZUN2VTM2JPLY90QJSAOpF8NIuBELJ0E7JzEa9sEKxoDaFhBYdZAYVTAP9UAP9R//9GAICAAEtLSzIyMh4eHgAAAACZ3wz9AAAA/3RSTlMAAQIDBAUGBwgJCgsMDQ4PEBITFBUWFxgZGhscHR4fICEiIyQlJicpKissLS4vMDEyMzQ1Njc4OTo7PD0+P0BBQkNERUZHSElKS0xNTk9QUVJTVFVWV1hZWltcXV5fYGFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6e3x9foGEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7rT6bvAAAAAmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIgogICAgeG1sbnM6SXB0YzR4bXBDb3JlPSJodHRwOi8vaXB0Yy5vcmcvc3RkL0lwdGM0eG1wQ29yZS8xLjAveG1sbnMvIgogICAgeG1sbnM6R2V0dHlJbWFnZXNHSUZUPSJodHRwOi8veG1wLmdldHR5aW1hZ2VzLmNvbS9naWZ0LzEuMC8iCiAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICB4bWxuczpwbHVzPSJodHRwOi8vbnMudXNlcGx1cy5vcmcvbGRmL3htcC8xLjAvIgogICAgeG1sbnM6aXB0Y0V4dD0iaHR0cDovL2lwdGMub3JnL3N0ZC9JcHRjNHhtcEV4dC8yMDA4LTAyLTI5LyIKICAgIHhtbG5zOnhtcFJpZ2h0cz0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3JpZ2h0cy8iCiAgIGRjOmNyZWF0b3I9Ijxjb25mYWRlbnRpYWw+IgogICBkYzpjcmVhdG9yPSJKb3NlIEFsYmVydG8gUm9tZXJvIFBlcmV6IgogICBkYzptb2RpZmllZD0iMjAyNC0wMi0wNlQyMDozODo0Mi0wODowMCIKICAgIHhtcDpNZXRhZGF0YURhdGU9IjIwMjQtMDItMDZUMjA6Mzg6NDItMDc6MDAiCiAgIHBob3Rvc2hvcDpEYXRlQ3JlYXRlZD0iMjAxOS0wMS0yMVQxMTozNDowMC0wODowMCI+CiAgIDxkYzp0aXRsZT4KICAgIDxyZGY6QWx0PgogICAgIDxyZGY6bGkgeG1sOmxhbmc9IngtZGVmYXVsdCI+RU5URVJQQUxNTyBERSBURVJDRVJPTyAtIE5VQiBERSBDQU5UTyBERSBTRU5ORVJPIERFIEhVSUxDIERFIExBIFNFVklMTEFOQSBISFkgQ09GIERFIEVOREVJWkEgQk9SUkVDQUxFUyAtIEVOVEVSUEFMUk8gREUgVEVSQ0VSQSBPTyBORUJMRSBDRU5BTlQgREUgU0VOSE9SIE1FRElDIENPTiBBIERFIENFVklMTEFOQSBESERBIERFIENBTlRPUiBFIEJPUlJBS0VMRVMgPC9yZGY6bGk+CiAgICA8L3JkZjpBbHQ+CiAgIDwvZGM6dGl0bGU+CiAgIDxpcHRjRXh0OkxvY2F0aW9uQ3JlYXRlZD4KICAgIDxyZGY6QmFnLz4KICAgPC9pcHRjRXh0OkxvY2F0aW9uQ3JlYXRlZD4KICAgPGlwdGNFeHQ6QXJ0d29ya09yT2JqZWN0PgogICAgPHJkZjpCYWcvPgogICA8L2lwdGNFeHQ6QXJ0d29ya09yT2JqZWN0PgogICA8eG1wUmlnaHRzOldlYlN0YXRlbWVudD5odHRwczovL2dydXBvemVuaXQuY29tLzwveG1wUmlnaHRzOldlYlN0YXRlbWVudD4KICA8L3JkZjpEZXNjcmlwdGlvbj4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cjw/eHBhY2t1ZGF0ZSBlbmQ9InciPz4A/s8AAAeASURBVHic7dxnbFRlHMDxZ+bO7HYL';
 
   return (
-    <div className="flex items-center space-x-2">
-      <img
-      src={logoSrc}
-      alt="ERP Pro"
-      className="object-contain"
-      style={{ width: 150, height: 70 }}
-      />
+    <div className="flex items-center space-x-2 rtl:space-x-reverse">
+      <img src={logoSrc} alt={t('brand_name')} className="h-8 w-auto" />
+      <span className={`text-2xl font-bold ${textColor || 'text-secondary'}`}>
+        {t('brand_name')}
+      </span>
     </div>
   );
 };

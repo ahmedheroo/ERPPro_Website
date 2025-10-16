@@ -74,6 +74,7 @@ const App: React.FC = () => {
           <div className="w-4 h-4 rounded-full bg-primary animate-pulse"></div>
           <div className="w-4 h-4 rounded-full bg-primary animate-pulse [animation-delay:0.2s]"></div>
           <div className="w-4 h-4 rounded-full bg-primary animate-pulse [animation-delay:0.4s]"></div>
+          <span className="text-2xl font-semibold text-secondary ml-4">ERP Pro</span>
         </div>
       </div>
     );
