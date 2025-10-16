@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
@@ -40,6 +39,23 @@
       .fade-in.visible {
         opacity: 1;
         transform: translateY(0);
+      }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #0052cc; /* primary color */
+        transition: width 0.3s ease-in-out;
+      }
+      .nav-link:hover::after, .nav-link.active::after {
+        width: 100%;
+      }
+      .mobile-menu {
+        transition: transform 0.3s ease-in-out;
       }
     </style>
   <script type="importmap">

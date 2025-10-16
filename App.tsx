@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -13,6 +12,7 @@ import Footer from './components/Footer';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000); // Simulate loading
@@ -36,6 +36,36 @@ const App: React.FC = () => {
     return () => elements.forEach(el => observer.unobserve(el));
   }, [loading]);
 
+  useEffect(() => {
+    if (loading) return;
+
+    const sections = document.querySelectorAll('section[id]');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Check if the section is more than 50% visible
+            if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                setActiveSection(entry.target.id);
+            }
+        });
+    }, {
+        // Trigger when the section is in the middle of the screen
+        rootMargin: '-50% 0px -50% 0px',
+        threshold: 0.5
+    });
+
+    sections.forEach(section => {
+        if (section.id) {
+            observer.observe(section);
+        }
+    });
+
+    return () => sections.forEach(section => {
+        if (section.id) {
+            observer.unobserve(section);
+        }
+    });
+  }, [loading]);
 
   if (loading) {
     return (
@@ -52,7 +82,7 @@ const App: React.FC = () => {
 
   return (
     <div className="bg-white">
-      <Header />
+      <Header activeSection={activeSection} />
       <main>
         <Hero />
         <About />
