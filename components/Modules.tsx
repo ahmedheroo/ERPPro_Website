@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface ModuleCardProps {
@@ -10,11 +9,23 @@ interface ModuleCardProps {
 }
 
 const ModuleCard: React.FC<ModuleCardProps> = ({ icon, title, description, isComingSoon = false, delay = '0s' }) => (
-  <div className={`p-8 rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 fade-in ${isComingSoon ? 'bg-gray-100 relative overflow-hidden' : 'bg-white hover:shadow-2xl'}`} style={{ transitionDelay: delay }}>
+  <div 
+    className={`p-8 rounded-xl shadow-lg transition-all duration-300 transform fade-in ${
+      isComingSoon 
+        ? 'bg-gray-100 relative group' 
+        : 'bg-white hover:shadow-2xl hover:-translate-y-2 hover:scale-105'
+    }`} 
+    style={{ transitionDelay: delay }}
+  >
     {isComingSoon && (
-      <div className="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-4 py-1 transform translate-x-1/4 -translate-y-1/4 rotate-45">
-        SOON
-      </div>
+      <>
+        <div className="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-4 py-1 transform translate-x-1/4 -translate-y-1/4 rotate-45 z-10">
+          SOON
+        </div>
+        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max px-3 py-1.5 text-xs font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 whitespace-nowrap">
+          More details will be available soon.
+        </div>
+      </>
     )}
     <div className={`text-4xl mb-4 ${isComingSoon ? 'text-gray-400' : 'text-primary'}`}>
       <i className={`fas ${icon}`}></i>
